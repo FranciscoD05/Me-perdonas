@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>¿Me perdonas?</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+      }
+      .message {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        margin: 0 10px;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out; /* Agregamos una transición para suavizar el cambio de tamaño y color */
+      }
+      .button:hover {
+        filter: brightness(110%); /* Cambiamos el brillo al pasar el mouse */
+      }
+      #siButton {
+        background-color: green; /* Cambiamos el color de fondo del botón "Sí" a rosa */
+      }
+      #noButton {
+        background-color: red; /* Cambiamos el color de fondo del botón "No" a verde */
+      }
+      .enlarge {
+        transform: scale(1.2); /* Aumenta el tamaño del botón en un 20% */
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbG5jY3dwcXFyd2h1dGc2bnEyNXE4Z3UxY28xbDRremxmemlqbmF2aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8Frnj3MI2kAmjD08WC/giphy.gif"
+      alt="Podlee tierno con corazón"
+      style="width: 200px; height: auto"
+    />
+    <br />
+    <div class="message" id="forgivenessMessage">
+      Perdon por todo lo que hice mal, me equivoque y estoy dispuesto a
+      compensar eso con darte la felicidad que realmente mereces. Toma mi mano y
+      regresemos al camino de la felicidad, donde solo existamos tu y yo. ¿Me
+      das esa oportunidad?
+    </div>
+    <div class="message" id="loveMessage" style="display: none">
+      ¡Siii Te Amo 3 Millones!
+    </div>
+    <br />
+    <img
+      src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDczaGI1OXhsN3U5MXVzODA5dGt4NWx6ajdxN2FzazNsZmptZDJlMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IzXiddo2twMmdmU8Lv/giphy.gif"
+      alt="Podlee tierno con corazón"
+      style="width: 400px; height: auto; display: none"
+      id="loveGif"
+      class="centered"
+    />
+    <br />
+    <button class="button" id="siButton">Sí</button>
+    <button class="button" id="noButton">No</button>
+
+    <script>
+      var siButton = document.getElementById("siButton");
+      var noButton = document.getElementById("noButton");
+      var forgivenessMessage = document.getElementById("forgivenessMessage");
+      var enlargementFactor = 1.2; // Factor de agrandamiento (20%)
+
+      document
+        .getElementById("siButton")
+        .addEventListener("click", function () {
+          document.getElementById("loveMessage").style.display = "block"; // Mostrar el mensaje
+          //document.getElementById('Message1').style.display = 'none'; // Mostrar el mensaje
+          document.getElementById("loveGif").style.display = "block"; // Mostrar el GIF
+          var currentWidth = parseFloat(
+            window.getComputedStyle(siButton, null).getPropertyValue("width")
+          );
+          var currentHeight = parseFloat(
+            window.getComputedStyle(siButton, null).getPropertyValue("height")
+          );
+          var newWidth = currentWidth * enlargementFactor;
+          var newHeight = currentHeight * enlargementFactor;
+          siButton.style.width = newWidth + "px";
+          siButton.style.height = newHeight + "px";
+          siButton.style.display = "none"; // Ocultar el botón "Sí"
+          noButton.style.display = "none"; // Ocultar el botón "No"
+          forgivenessMessage.style.display = "none";
+        });
+
+      var noButtonTexts = [
+        "¿Estás segura?",
+        "¿Estás completamente segura?",
+        "Pero segura segurisima",
+        "Deberitas deberitas",
+        "Te confundiste de boton jaja",
+        "Te amo mucho, porfavor di que si",
+        "¿Quieres que llore?",
+        "Este boton no es jaja",
+        "Ya no le piques a este boton por favor :(",
+      ];
+      var noButtonIndex = 0;
+      document
+        .getElementById("noButton")
+        .addEventListener("click", function () {
+          var currentWidth = parseFloat(
+            window.getComputedStyle(siButton, null).getPropertyValue("width")
+          );
+          var currentHeight = parseFloat(
+            window.getComputedStyle(siButton, null).getPropertyValue("height")
+          );
+          var newWidth = currentWidth * enlargementFactor;
+          var newHeight = currentHeight * enlargementFactor;
+          siButton.style.width = newWidth + "px";
+          siButton.style.height = newHeight + "px";
+
+          // Cambiar el texto del botón "No"
+          document.getElementById("noButton").textContent =
+            noButtonTexts[noButtonIndex];
+          noButtonIndex = (noButtonIndex + 1) % noButtonTexts.length; // Avanzar al siguiente índice circularmente
+          // alert('Lo siento mucho...');
+        });
+    </script>
+  </body>
+</html>
